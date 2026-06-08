@@ -1,2 +1,1 @@
-# codigos-aulasML
-Aqui você encontra os códigos que são utilizados nas aulas.
+Códigos e materiais utilizado nas gravações das aulas do Curso instrumental de ML. Em algumas aulas os códigos estão separados por cédeulas, enquanto aqui disponibilizamos todo o código fonte, caso queiram manter o fluxo fa aula separem todo o código em célula conforme a organização em aula.
