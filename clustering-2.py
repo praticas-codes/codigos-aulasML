@@ -39,3 +39,35 @@ plt.title("K-Means: Estado de Convergência (Centróides encontraram o centro pe
 plt.legend()
 plt.grid(True, linestyle=':', alpha=0.6)
 plt.show()
+
+#célula 3 - método do cotovelo
+
+# Lista vazia para guardar a "Inércia" (grau de espalhamento) de cada teste
+valores_inercia = []
+
+# Vamos testar o K-Means criando de 1 até 10 grupos
+K_testes = range(1, 11)
+
+for k in K_testes:
+    # Cria o modelo com o K da vez
+    modelo_teste = KMeans(n_clusters=k, random_state=42)
+    modelo_teste.fit(X)
+    
+    # Guarda o valor da Inércia calculada pelo modelo
+    valores_inercia.append(modelo_teste.inertia_)
+
+# Plotando o Gráfico do Método do Cotovelo
+plt.figure(figsize=(9, 5))
+plt.plot(K_testes, valores_inercia, marker='o', color='b', linewidth=2, markersize=8)
+
+plt.title("Método do Cotovelo: Descobrindo o K Ideal", fontsize=14)
+plt.xlabel("Número de Grupos (K)", fontsize=12)
+plt.ylabel("Inércia (Espalhamento dos Dados)", fontsize=12)
+
+# Marcando com uma seta vermelha onde o "cotovelo" dobra
+plt.annotate('O Cotovelo (K ideal = 3)', xy=(3, valores_inercia[2]), xytext=(4, valores_inercia[2] + 100),
+             arrowprops=dict(facecolor='red', shrink=0.05), fontsize=12, color='red', weight='bold')
+
+plt.xticks(K_testes)
+plt.grid(True, linestyle=':', alpha=0.6)
+plt.show()
